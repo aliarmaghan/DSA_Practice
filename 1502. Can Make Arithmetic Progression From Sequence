@@ -1,0 +1,17 @@
+class Solution {
+    public boolean canMakeArithmeticProgression(int[] arr) {
+        Arrays.sort(arr);
+        int a = 0;
+        int b = 1;
+        int diff = arr[b] - arr[a];
+        while(b != arr.length){
+            int diff1 = arr[b] - arr[a];
+            if(diff != diff1 ){
+                return false;
+            }
+            a++;
+            b++;
+        }
+        return true;
+    }
+}
