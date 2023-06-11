@@ -1,0 +1,16 @@
+class Solution {
+    public String reverseWords(String s) {
+        Stack<String> stk = new Stack<>();
+        for(String newStr : s.trim().split(" ")) {
+            if(!newStr.isEmpty()) {
+                stk.push(newStr);
+            }
+        }
+        StringBuilder sb = new StringBuilder("");
+        while(!stk.isEmpty()){
+            sb.append(stk.pop());
+            sb.append(" ");
+        }
+        return sb.toString().trim();
+    }
+}
