@@ -1,5 +1,29 @@
 class Solution {
     public int equalPairs(int[][] grid) {
+    
+        #BruteForce Approach with TC = O(n^3)
+       
+        int row = grid.length;
+        int col = grid[0].length;
+        int count = 0;
+        for(int r=0; r<row; r++) {
+            for(int c=0; c<col; c++) {
+                boolean isEqual = true;
+                for(int i=0; i<row; i++) {
+                    if(grid[r][i] != grid[i][c]) {
+                        isEqual = false;
+                        break;
+                    }
+                }
+                if(isEqual == true) {
+                        count++;
+                    }
+            }
+        }
+        return count;
+        
+        #Optimize Approach
+        
         HashMap<String, Integer> map = new HashMap<>();
         int row = grid.length;
         int col = grid[0].length;
@@ -21,4 +45,3 @@ class Solution {
         return count;
     }
 }
-Console
