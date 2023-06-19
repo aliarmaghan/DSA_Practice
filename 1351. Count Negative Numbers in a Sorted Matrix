@@ -1,0 +1,58 @@
+class Solution {
+    public int countNegatives(int[][] grid) {
+
+# 1st Approach
+
+        int sRow =0, eRow =grid.length-1, sCol = 0, eCol = grid[0].length-1;
+        int count =0;
+        while(sRow <= eRow && sCol <= eCol) {
+            //top
+            for(int j=sCol; j<=eCol; j++) {
+                if(grid[sRow][j] < 0){
+                    count++;
+                }
+            }
+            //right
+            for(int i=sRow+1; i<=eRow; i++) {
+                if(grid[i][eCol] < 0){
+                    count++;
+                }
+            }
+            //bottom
+            for(int j=eCol-1; j>=sCol; j--) {
+                if(grid[eRow][j] < 0){
+                    count++;
+                }
+            }
+            //left
+            for(int i=eRow-1; i>=sRow+1; i--) {
+                if(grid[i][sCol] < 0){
+                    count++;
+                }
+            }
+            sRow++;
+            sCol++;
+            eRow--;
+            eCol--;
+        }
+        return count;
+        
+# 2nd Approach
+        
+        int m = grid.length;
+        int n = grid[0].length;
+
+        int ans = 0, lo = 0, hi = n;
+        for (int i = 0; i < m; i++) {
+            while (lo < hi) { // find the smallest index such that its element < 0 
+                int mid = lo + (hi - lo) / 2;
+                if (grid[i][mid] < 0) hi = mid;
+                else lo = mid + 1;
+            }
+            ans += n - lo;
+            hi = lo;
+            lo = 0;
+        }
+        return ans;   
+    }
+}
