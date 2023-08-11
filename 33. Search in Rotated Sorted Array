@@ -38,6 +38,7 @@ class Solution {
         }
     }
 
+   // ------------------------Second Approach-------------------------------------
     public int search(int[] nums, int target) {
         if(nums.length == 0){
             return -1;
@@ -45,7 +46,6 @@ class Solution {
         
         return helper(nums,target,0,nums.length-1);  
     }
-    // ------------------------Second Approach-------------------------------------
     public int helper(int[] nums, int tar, int low, int high){
         if(low > high){
             return -1;
